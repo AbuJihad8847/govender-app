@@ -769,6 +769,7 @@ export default function Home() {
                             <p className="text-gray-400">
                                 {t.footerTagline}
                             </p>
+                            <p className="text-gray-600 text-xs mt-4">v1.1</p>
                         </div>
                         <div>
                             <h4 className="text-lg font-semibold mb-4">{t.contactTitle}</h4>
