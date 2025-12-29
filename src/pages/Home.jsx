@@ -335,25 +335,27 @@ export default function Home() {
 
             {/* Hero Section */}
             <section id="home" className="py-20 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-4xl mx-auto text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                        {t.heroTitle}
-                    </h1>
-                    <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                        {t.heroSubtitle}
-                    </p>
+                <div className="max-w-7xl mx-auto text-center">
+                    <div className="max-w-4xl mx-auto mb-12">
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                            {t.heroTitle}
+                        </h1>
+                        <p className="text-xl text-gray-600 mb-8">
+                            {t.heroSubtitle}
+                        </p>
 
-                    {/* Statistics Block */}
-                    <div className="bg-white rounded-2xl shadow-xl p-6 mb-8 max-w-2xl mx-auto">
-                        <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
-                            <div className="text-center">
-                                <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">50+</div>
-                                <div className="text-gray-700 font-medium">{t.statsText}</div>
+                        {/* Statistics Block */}
+                        <div className="bg-white rounded-2xl shadow-xl p-6 max-w-2xl mx-auto">
+                            <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
+                                <div className="text-center">
+                                    <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">50+</div>
+                                    <div className="text-gray-700 font-medium">{t.statsText}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+                    <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 w-full mx-auto">
                         <h2 className="text-2xl font-bold text-gray-900 mb-8">{t.formTitle}</h2>
                         {error && <p className="text-red-500 mb-4">{error}</p>}
                         <form onSubmit={handleSubmit} className="space-y-6">

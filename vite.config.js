@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
     plugins: [react()],
-    base: '/govender-app/',
+    base: mode === 'github' ? '/govender-app/' : '/',
 }))

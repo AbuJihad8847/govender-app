@@ -6,39 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GoVendor - Abu Dhabi Vendor Registration</title>
 </head>
-<script>
-  function showError(msg) {
-    var box = document.getElementById('err-box');
-    if (!box) {
-      box = document.createElement("div");
-      box.id = "err-box";
-      box.style.cssText = "position:fixed;top:0;left:0;width:100%;height:auto;min-height:50px;background:red;color:white;padding:10px;z-index:99999;font-family:monospace;white-space:pre-wrap;border-bottom: 2px solid white;";
-      document.body.prepend(box);
-    }
-    box.innerText += "\n[ERROR]: " + msg;
-  }
-
-  window.onerror = function (message, source, lineno, colno, error) {
-    showError(message + " (" + source + ":" + lineno + ")");
-    return false;
-  };
-
-  window.onunhandledrejection = function (event) {
-    showError("Unhandled Promise: " + (event.reason ? event.reason.toString() : "Unknown"));
-  };
-
-  window.addEventListener('error', function (e) {
-    if (e.target && (e.target.tagName === 'SCRIPT' || e.target.tagName === 'LINK')) {
-      showError("Resource Failed to Load: " + (e.target.src || e.target.href));
-    }
-  }, true);
-</script>
 
 <body>
-  <div id="root" style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
-    <h1 style="font-family: sans-serif; color: #333;">Loading GoVendor App...<br><span
-        style="font-size: 14px; font-weight: normal;">(If this stays for >5s, please report it)</span></h1>
-  </div>
+  <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
