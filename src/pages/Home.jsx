@@ -334,18 +334,18 @@ export default function Home() {
             </header>
 
             {/* Hero Section */}
-            <section id="home" className="py-20 px-4 sm:px-6 lg:px-8">
+            <section id="home" className="pt-20 pb-12 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto text-center">
                     <div className="max-w-4xl mx-auto mb-12">
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                             {t.heroTitle}
                         </h1>
-                        <p className="text-xl text-gray-600 mb-8">
+                        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             {t.heroSubtitle}
                         </p>
 
                         {/* Statistics Block */}
-                        <div className="bg-white rounded-2xl shadow-xl p-6 max-w-2xl mx-auto">
+                        <div className="bg-white rounded-2xl shadow-lg p-6 max-w-2xl mx-auto">
                             <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
                                 <div className="text-center">
                                     <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">50+</div>
@@ -354,135 +354,142 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
 
-                    <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 w-full mx-auto">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-8">{t.formTitle}</h2>
-                        {error && <p className="text-red-500 mb-4">{error}</p>}
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label htmlFor="ownerName" className="block text-sm font-medium text-gray-700 mb-2">
-                                        {t.ownerNameLabel}
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="ownerName"
-                                        name="ownerName"
-                                        value={formData.ownerName}
-                                        onChange={handleChange}
-                                        required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                        placeholder={t.ownerNamePlaceholder}
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-2">
-                                        {t.phoneLabel}
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        id="phoneNumber"
-                                        name="phoneNumber"
-                                        value={formData.phoneNumber}
-                                        onChange={handleChange}
-                                        required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                        placeholder={t.phonePlaceholder}
-                                    />
-                                </div>
-                            </div>
+            {/* Registration Form Section - Full Width Background */}
+            <section className="py-16 bg-white w-full">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-10">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4">{t.formTitle}</h2>
+                    </div>
 
+                    {error && <p className="text-red-500 mb-6 text-center">{error}</p>}
+
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label htmlFor="businessName" className="block text-sm font-medium text-gray-700 mb-2">
-                                    {t.businessNameLabel}
+                                <label htmlFor="ownerName" className="block text-sm font-medium text-gray-700 mb-2">
+                                    {t.ownerNameLabel}
                                 </label>
                                 <input
                                     type="text"
-                                    id="businessName"
-                                    name="businessName"
-                                    value={formData.businessName}
+                                    id="ownerName"
+                                    name="ownerName"
+                                    value={formData.ownerName}
                                     onChange={handleChange}
                                     required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                    placeholder={t.businessNamePlaceholder}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 bg-gray-50"
+                                    placeholder={t.ownerNamePlaceholder}
                                 />
                             </div>
-
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                                    {t.emailLabel}
+                                <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-2">
+                                    {t.phoneLabel}
                                 </label>
                                 <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={formData.email}
+                                    type="tel"
+                                    id="phoneNumber"
+                                    name="phoneNumber"
+                                    value={formData.phoneNumber}
                                     onChange={handleChange}
                                     required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                    placeholder={t.emailPlaceholder}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 bg-gray-50"
+                                    placeholder={t.phonePlaceholder}
                                 />
                             </div>
+                        </div>
 
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    {t.specificEntityLabel}
-                                </label>
-                                <div className="flex space-x-6" dir="ltr">
-                                    <label className="flex items-center">
-                                        <input
-                                            type="radio"
-                                            name="registerSpecificEntity"
-                                            value="no"
-                                            checked={formData.registerSpecificEntity === "no"}
-                                            onChange={handleChange}
-                                            className="mr-2"
-                                        />
-                                        {t.generalRegistration}
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input
-                                            type="radio"
-                                            name="registerSpecificEntity"
-                                            value="yes"
-                                            checked={formData.registerSpecificEntity === "yes"}
-                                            onChange={handleChange}
-                                            className="mr-2"
-                                        />
-                                        {t.specificRegistration}
-                                    </label>
-                                </div>
-                            </div>
+                        <div>
+                            <label htmlFor="businessName" className="block text-sm font-medium text-gray-700 mb-2">
+                                {t.businessNameLabel}
+                            </label>
+                            <input
+                                type="text"
+                                id="businessName"
+                                name="businessName"
+                                value={formData.businessName}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 bg-gray-50"
+                                placeholder={t.businessNamePlaceholder}
+                            />
+                        </div>
 
-                            {formData.registerSpecificEntity === "yes" && (
-                                <div>
-                                    <label htmlFor="specificEntity" className="block text-sm font-medium text-gray-700 mb-2">
-                                        {t.specifyEntityLabel}
-                                    </label>
-                                    <textarea
-                                        id="specificEntity"
-                                        name="specificEntity"
-                                        value={formData.specificEntity}
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                                {t.emailLabel}
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 bg-gray-50"
+                                placeholder={t.emailPlaceholder}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                {t.specificEntityLabel}
+                            </label>
+                            <div className="flex space-x-6" dir="ltr">
+                                <label className="flex items-center cursor-pointer">
+                                    <input
+                                        type="radio"
+                                        name="registerSpecificEntity"
+                                        value="no"
+                                        checked={formData.registerSpecificEntity === "no"}
                                         onChange={handleChange}
-                                        required={formData.registerSpecificEntity === "yes"}
-                                        rows={3}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                        placeholder={t.specifyEntityPlaceholder}
-                                    ></textarea>
-                                </div>
-                            )}
-
-                            <div className="pt-4">
-                                <button
-                                    type="submit"
-                                    disabled={loading}
-                                    className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
-                                >
-                                    {loading ? (language === 'ar' ? 'جاري الإرسال...' : 'Sending...') : t.submitButton}
-                                </button>
+                                        className="mr-2 w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                                    />
+                                    {t.generalRegistration}
+                                </label>
+                                <label className="flex items-center cursor-pointer">
+                                    <input
+                                        type="radio"
+                                        name="registerSpecificEntity"
+                                        value="yes"
+                                        checked={formData.registerSpecificEntity === "yes"}
+                                        onChange={handleChange}
+                                        className="mr-2 w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                                    />
+                                    {t.specificRegistration}
+                                </label>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+
+                        {formData.registerSpecificEntity === "yes" && (
+                            <div>
+                                <label htmlFor="specificEntity" className="block text-sm font-medium text-gray-700 mb-2">
+                                    {t.specifyEntityLabel}
+                                </label>
+                                <textarea
+                                    id="specificEntity"
+                                    name="specificEntity"
+                                    value={formData.specificEntity}
+                                    onChange={handleChange}
+                                    required={formData.registerSpecificEntity === "yes"}
+                                    rows={3}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 bg-gray-50"
+                                    placeholder={t.specifyEntityPlaceholder}
+                                ></textarea>
+                            </div>
+                        )}
+
+                        <div className="pt-8">
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300 shadow-lg transform hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                            >
+                                {loading ? (language === 'ar' ? 'جاري الإرسال...' : 'Sending...') : t.submitButton}
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </section>
 
