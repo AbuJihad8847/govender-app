@@ -9,6 +9,39 @@
 
 <body>
   <div id="root"></div>
+  <!-- Emergency Error Logger -->
+  <script>
+    window.onerror = function (message, source, lineno, colno, error) {
+      const errorBox = document.createElement('div');
+      errorBox.style.position = 'fixed';
+      errorBox.style.top = '0';
+      errorBox.style.left = '0';
+      errorBox.style.width = '100%';
+      errorBox.style.padding = '20px';
+      errorBox.style.backgroundColor = 'red';
+      errorBox.style.color = 'white';
+      errorBox.style.zIndex = '999999';
+      errorBox.style.fontSize = '16px';
+      errorBox.style.whiteSpace = 'pre-wrap';
+      errorBox.innerHTML = '<strong>Application Error:</strong><br>' + message + '<br><small>' + source + ':' + lineno + '</small>';
+      document.body.appendChild(errorBox);
+      return false;
+    };
+    window.addEventListener('unhandledrejection', function (event) {
+      const errorBox = document.createElement('div');
+      errorBox.style.position = 'fixed';
+      errorBox.style.bottom = '0';
+      errorBox.style.left = '0';
+      errorBox.style.width = '100%';
+      errorBox.style.padding = '20px';
+      errorBox.style.backgroundColor = 'orange';
+      errorBox.style.color = 'white';
+      errorBox.style.zIndex = '999999';
+      errorBox.style.fontSize = '16px';
+      errorBox.innerHTML = '<strong>Promise Error:</strong><br>' + event.reason;
+      document.body.appendChild(errorBox);
+    });
+  </script>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
