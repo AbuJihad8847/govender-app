@@ -284,29 +284,7 @@ export default function Home() {
 
     const currentReview = reviews[currentReviewIndex];
 
-    if (isSubmitted) {
-        return (
-            <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-                <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md text-center">
-                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <h2 className="text-2xl font-bold text-gray-800 mb-2">{t.thankYouTitle}</h2>
-                    <p className="text-gray-600 mb-6">
-                        {t.thankYouMessage}
-                    </p>
-                    <button
-                        onClick={() => setIsSubmitted(false)}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300"
-                    >
-                        {t.submitAnother}
-                    </button>
-                </div>
-            </div>
-        );
-    }
+
 
 
 
@@ -386,130 +364,151 @@ export default function Home() {
                     <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 w-full mx-auto">
                         <h2 className="text-2xl font-bold text-gray-900 mb-8">{t.formTitle}</h2>
                         {error && <p className="text-red-500 mb-4">{error}</p>}
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                        {isSubmitted ? (
+                            <div className="text-center py-12">
+                                <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+                                <h2 className="text-3xl font-bold text-gray-900 mb-4">{t.thankYouTitle}</h2>
+                                <p className="text-xl text-gray-600 mb-8 max-w-lg mx-auto">
+                                    {t.thankYouMessage}
+                                </p>
+                                <button
+                                    onClick={() => setIsSubmitted(false)}
+                                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105"
+                                >
+                                    {t.submitAnother}
+                                </button>
+                            </div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label htmlFor="ownerName" className="block text-sm font-medium text-gray-700 mb-2">
+                                            {t.ownerNameLabel}
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="ownerName"
+                                            name="ownerName"
+                                            value={formData.ownerName}
+                                            onChange={handleChange}
+                                            required
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                                            placeholder={t.ownerNamePlaceholder}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-2">
+                                            {t.phoneLabel}
+                                        </label>
+                                        <input
+                                            type="tel"
+                                            id="phoneNumber"
+                                            name="phoneNumber"
+                                            value={formData.phoneNumber}
+                                            onChange={handleChange}
+                                            required
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                                            placeholder={t.phonePlaceholder}
+                                        />
+                                    </div>
+                                </div>
+
                                 <div>
-                                    <label htmlFor="ownerName" className="block text-sm font-medium text-gray-700 mb-2">
-                                        {t.ownerNameLabel}
+                                    <label htmlFor="businessName" className="block text-sm font-medium text-gray-700 mb-2">
+                                        {t.businessNameLabel}
                                     </label>
                                     <input
                                         type="text"
-                                        id="ownerName"
-                                        name="ownerName"
-                                        value={formData.ownerName}
+                                        id="businessName"
+                                        name="businessName"
+                                        value={formData.businessName}
                                         onChange={handleChange}
                                         required
                                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                        placeholder={t.ownerNamePlaceholder}
+                                        placeholder={t.businessNamePlaceholder}
                                     />
                                 </div>
+
                                 <div>
-                                    <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-2">
-                                        {t.phoneLabel}
+                                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                                        {t.emailLabel}
                                     </label>
                                     <input
-                                        type="tel"
-                                        id="phoneNumber"
-                                        name="phoneNumber"
-                                        value={formData.phoneNumber}
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value={formData.email}
                                         onChange={handleChange}
                                         required
                                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                        placeholder={t.phonePlaceholder}
+                                        placeholder={t.emailPlaceholder}
                                     />
                                 </div>
-                            </div>
 
-                            <div>
-                                <label htmlFor="businessName" className="block text-sm font-medium text-gray-700 mb-2">
-                                    {t.businessNameLabel}
-                                </label>
-                                <input
-                                    type="text"
-                                    id="businessName"
-                                    name="businessName"
-                                    value={formData.businessName}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                    placeholder={t.businessNamePlaceholder}
-                                />
-                            </div>
-
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                                    {t.emailLabel}
-                                </label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                    placeholder={t.emailPlaceholder}
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    {t.specificEntityLabel}
-                                </label>
-                                <div className="flex space-x-6" dir="ltr">
-                                    <label className="flex items-center">
-                                        <input
-                                            type="radio"
-                                            name="registerSpecificEntity"
-                                            value="no"
-                                            checked={formData.registerSpecificEntity === "no"}
-                                            onChange={handleChange}
-                                            className="mr-2"
-                                        />
-                                        {t.generalRegistration}
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input
-                                            type="radio"
-                                            name="registerSpecificEntity"
-                                            value="yes"
-                                            checked={formData.registerSpecificEntity === "yes"}
-                                            onChange={handleChange}
-                                            className="mr-2"
-                                        />
-                                        {t.specificRegistration}
-                                    </label>
-                                </div>
-                            </div>
-
-                            {formData.registerSpecificEntity === "yes" && (
                                 <div>
-                                    <label htmlFor="specificEntity" className="block text-sm font-medium text-gray-700 mb-2">
-                                        {t.specifyEntityLabel}
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        {t.specificEntityLabel}
                                     </label>
-                                    <textarea
-                                        id="specificEntity"
-                                        name="specificEntity"
-                                        value={formData.specificEntity}
-                                        onChange={handleChange}
-                                        required={formData.registerSpecificEntity === "yes"}
-                                        rows={3}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                        placeholder={t.specifyEntityPlaceholder}
-                                    ></textarea>
+                                    <div className="flex space-x-6" dir="ltr">
+                                        <label className="flex items-center">
+                                            <input
+                                                type="radio"
+                                                name="registerSpecificEntity"
+                                                value="no"
+                                                checked={formData.registerSpecificEntity === "no"}
+                                                onChange={handleChange}
+                                                className="mr-2"
+                                            />
+                                            {t.generalRegistration}
+                                        </label>
+                                        <label className="flex items-center">
+                                            <input
+                                                type="radio"
+                                                name="registerSpecificEntity"
+                                                value="yes"
+                                                checked={formData.registerSpecificEntity === "yes"}
+                                                onChange={handleChange}
+                                                className="mr-2"
+                                            />
+                                            {t.specificRegistration}
+                                        </label>
+                                    </div>
                                 </div>
-                            )}
 
-                            <div className="pt-4">
-                                <button
-                                    type="submit"
-                                    disabled={loading}
-                                    className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
-                                >
-                                    {loading ? (language === 'ar' ? 'جاري الإرسال...' : 'Sending...') : t.submitButton}
-                                </button>
-                            </div>
-                        </form>
+                                {formData.registerSpecificEntity === "yes" && (
+                                    <div>
+                                        <label htmlFor="specificEntity" className="block text-sm font-medium text-gray-700 mb-2">
+                                            {t.specifyEntityLabel}
+                                        </label>
+                                        <textarea
+                                            id="specificEntity"
+                                            name="specificEntity"
+                                            value={formData.specificEntity}
+                                            onChange={handleChange}
+                                            required={formData.registerSpecificEntity === "yes"}
+                                            rows={3}
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                                            placeholder={t.specifyEntityPlaceholder}
+                                        ></textarea>
+                                    </div>
+                                )}
+
+                                <div className="pt-4">
+                                    <button
+                                        type="submit"
+                                        disabled={loading}
+                                        className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                                    >
+                                        {loading ? (language === 'ar' ? 'جاري الإرسال...' : 'Sending...') : t.submitButton}
+                                    </button>
+                                </div>
+                            </form>
+                        )}
                     </div>
                 </div>
             </section>
