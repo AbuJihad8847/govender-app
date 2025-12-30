@@ -65,6 +65,7 @@ export default function Home() {
             });
             console.log("Document added successfully");
 
+
             setIsSubmitted(true);
             setFormData({
                 ownerName: "",
@@ -361,12 +362,12 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 w-full mx-auto">
+                    <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 max-w-2xl w-full mx-auto">
                         <h2 className="text-2xl font-bold text-gray-900 mb-8">{t.formTitle}</h2>
                         {error && <p className="text-red-500 mb-4">{error}</p>}
 
                         {isSubmitted ? (
-                            <div className="text-center py-12">
+                            <div className="text-center py-12 border-2 border-green-300 bg-green-50 rounded-lg">
                                 <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                                     <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -798,7 +799,6 @@ export default function Home() {
                             <p className="text-gray-400">
                                 {t.footerTagline}
                             </p>
-                            <p className="text-gray-600 text-xs mt-4">v1.1</p>
                         </div>
                         <div>
                             <h4 className="text-lg font-semibold mb-4">{t.contactTitle}</h4>
